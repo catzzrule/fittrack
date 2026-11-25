@@ -132,6 +132,11 @@ label{font-size:13px;color:var(--mut);display:block;margin:12px 0 5px;font-weigh
 .animlbl{text-align:center;font-weight:700;color:var(--acc2);min-height:26px;padding:0 6px}
 .animctl{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:8px 0}
 
+/* ---- aviso de nova versão ---- */
+.updbar{position:fixed;left:12px;right:12px;bottom:90px;z-index:40;max-width:520px;margin:0 auto;background:#1b2330;border:1px solid var(--acc);border-radius:16px;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;box-shadow:0 10px 30px #000a;animation:updin .35s ease-out}
+@keyframes updin{from{transform:translateY(20px);opacity:0}}
+@media (min-width:900px){.updbar{bottom:24px;left:auto;right:24px;margin:0}}
+
 /* ---- início: anéis, palco 3D e missão ---- */
 .rings{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
 .ring{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:12px 6px 10px;display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer}

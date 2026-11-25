@@ -439,7 +439,25 @@ function checkReminders() {
 setInterval(checkReminders, 20000); checkReminders();
 
 // ---------- Início ----------
-if ('serviceWorker' in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('sw.js').catch(() => {});
+// ---------- atualização automática ----------
+function showUpdate() {
+  if ($('#updbar')) return;
+  const b = document.createElement('div');
+  b.id = 'updbar'; b.className = 'updbar';
+  b.innerHTML = '<span>🔄 <b>Nova versão disponível</b></span><div class="row"><button class="btn sm" id="updGo">Atualizar</button><button class="btn sec sm" id="updLater">Depois</button></div>';
+  document.body.appendChild(b);
+  $('#updLater').onclick = () => b.remove();
+  $('#updGo').onclick = () => {
+    if (sess && !confirm('Há um treino em andamento. Atualizar agora perde as séries ainda não finalizadas.\n\nAtualizar mesmo assim?')) return;
+    location.reload();
+  };
+}
+if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+  navigator.serviceWorker.addEventListener('message', e => { if (e.data && e.data.type === 'UPDATED') showUpdate(); });
+  const check = () => navigator.serviceWorker.ready.then(r => r.active && r.active.postMessage({ type: 'CHECK' })).catch(() => {});
+  navigator.serviceWorker.register('sw.js').then(check).catch(() => {});
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) check(); }); // ao voltar para o app
+}
 try { navigator.storage?.persist?.(); } catch {}
 go('inicio');
 // primeira abertura: pergunta o objetivo logo de cara (só para quem ainda não tem nada)
