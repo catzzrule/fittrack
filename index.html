@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0d0f14">
+  <title>FitTrack – Meu Treino</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.svg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="side">
+      <div class="logo"><img src="icon.svg" alt=""><b>FitTrack</b></div>
+      <nav id="tabs">
+        <button data-tab="inicio"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span>Início</span></button>
+        <button data-tab="treinos"><svg viewBox="0 0 24 24"><path d="M6 6v12M18 6v12M3 9v6M21 9v6M6 12h12"/></svg><span>Treinos</span></button>
+        <button data-tab="exercicios"><svg viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 19V5M9 8h6"/></svg><span>Exercícios</span></button>
+        <button data-tab="evolucao"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg><span>Evolução</span></button>
+        <button data-tab="perfil"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>Perfil</span></button>
+      </nav>
+    </aside>
+    <div class="content">
+      <header class="top"><h1 id="title">Início</h1><div id="topAction"></div></header>
+      <main id="view"></main>
+    </div>
+  </div>
+  <div id="modal" class="modal" hidden><div class="sheet" id="sheet"></div></div>
+  <div id="toast" class="toast" hidden></div>
+  <script src="exercises.js"></script>
+  <script src="anim3d.js"></script>
+  <script src="gamify.js"></script>
+  <script src="programs.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
